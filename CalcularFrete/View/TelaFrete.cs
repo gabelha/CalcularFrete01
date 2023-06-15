@@ -22,23 +22,25 @@ namespace CalcularFrete.View
 
         private void btncalcular_Click(object sender, EventArgs e)
         {
-            if (cbuf.Text == string.Empty || txtvalor.Text == string.Empty || txtcliente.Text == string.Empty)
+            if (cbuf.Text == string.Empty && txtvalor.Text == string.Empty)
             {
-                MessageBox.Show("Alguns campos não foram preenchidos", "Atenção");
+                MessageBox.Show("Preencha o Valor e escolha o Estado.");
             }
             else
             {
                 string uf = cbuf.Text;
-                decimal v = Convert.ToDecimal(txtvalor.Text);
-                decimal vfrete = frete.Calcular(uf, v);
-                decimal total = vfrete + v;
+                decimal valor = Convert.ToDecimal(txtvalor.Text);
+                decimal vfrete = frete.Calcular(uf, valor);
+                decimal total = vfrete + valor;
 
                 decimal uffrete = (vfrete / total);
 
                 txtfrete.Text = uffrete.ToString("P1");
 
-                lblResultado.Text = "Estado: " + uf + "\nValor do Produto: R$ " + v + "\nValor Frete: R$ " + vfrete +
-                    "\nValor Total: R$ " + total.ToString("N2");
+                lblResultado.Text = "Estado: " + uf + 
+                    "\nValor do Produto: R$ " + valor + 
+                    "\nValor Frete: R$ " + vfrete +
+                    "\nValor Total: R$ " + total;
             }
         }
     }

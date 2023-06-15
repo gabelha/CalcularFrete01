@@ -12,16 +12,17 @@ namespace CalcularFrete.Controller
         private decimal valor;
         private decimal frete;
         private string UF;
+        private string TipoEntrega;
         public Frete() 
         {
             
         }
 
-        public decimal Calcular(string uf, decimal v, decimal f)
+        public decimal Calcular(string uf, decimal valor)
         { 
             this.UF = uf;
-            this.valor = v;
-            this.frete = f;
+            this.valor = valor;
+            this.frete = 0;
 
             switch (uf)
             {
